@@ -1,15 +1,15 @@
 package main
 
+import "encoding/json"
+
 type Configuration struct {
-	Guards []*ConfigGuard
+	GuardsJSON string
 }
 
 type ConfigGuard struct {
-	TeamName string
-
+	TeamName    string
 	ChannelName string
-
-	Allowed []string
+	Allowed     []string
 }
 
 // OnConfigurationChange is invoked when configuration changes may have been made.
@@ -21,10 +21,17 @@ func (p *guard) OnConfigurationChange() error {
 		return err
 	}
 
-	p.guards.Store(c.Guards)
+	var guards []*ConfigGuard
+	if c.GuardsJSON != "" {
+		if err := json.Unmarshal([]byte(c.GuardsJSON), &guards); err != nil {
+			p.API.LogError("Failed to parse GuardsJSON", "err", err.Error())
+			return err
+		}
+	}
+
+	p.guards.Store(guards)
 
 	return nil
-
 }
 
 func (p *guard) getGuards() []*ConfigGuard {

@@ -11,6 +11,15 @@
         }
     },
     "settings_schema": {
-        "header": "Configure this plugin directly in the config.json file"
+        "header": "Channel Guard Configuration",
+        "settings": [
+            {
+                "key": "GuardsJSON",
+                "display_name": "Guards Configuration (JSON)",
+                "type": "longtext",
+                "help_text": "JSON array of guards. Each guard has TeamName, ChannelName, and Allowed (list of usernames). Example:\n[{\"TeamName\": \"myteam\", \"ChannelName\": \"announcements\", \"Allowed\": [\"admin1\", \"admin2\"]}]",
+                "default": "[]"
+            }
+        ]
     }
 }

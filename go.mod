@@ -22,7 +22,10 @@ require (
 )
 
 // Workaround for https://github.com/golang/go/issues/30831 and fallout.
-replace github.com/golang/lint => github.com/golang/lint v0.0.0-20190227174305-8f45f776aaf1
+replace github.com/golang/lint => github.com/golang/lint v0.0.0-20181217174547-8f45f776aaf1
 
 // Override since git.apache.org is down.
 replace git.apache.org/thrift.git => github.com/apache/thrift v0.0.0-20180902110319-2566ecd5d999
+
+// Fix invalid pseudo-version timestamp rejected by modern Go.
+replace willnorris.com/go/imageproxy v0.8.1-0.20190326225038-d4246a08fdec => willnorris.com/go/imageproxy v0.8.1-0.20190422234945-d4246a08fdec
