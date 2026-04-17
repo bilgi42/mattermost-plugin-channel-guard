@@ -56,6 +56,20 @@ make dist
 
 The plugin bundle will be output to `dist/com.mattermost.channel-guard-<version>.tar.gz`.
 
+### NixOS / Nix Flake
+
+```bash
+nix build
+```
+
+The bundle will be at `result/com.mattermost.channel-guard-<version>.tar.gz`.
+
+A dev shell with Go and Make is also available:
+
+```bash
+nix develop
+```
+
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE) for details.
